@@ -1,0 +1,5 @@
+./db.sqlite3
+**/migrations/
+.venv
+.vscode
+**/__pycache__/
