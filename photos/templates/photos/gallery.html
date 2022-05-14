@@ -18,24 +18,25 @@
                       Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <a href="{% url 'add' %}" class="btn btn-dark btn-sm">Add Photo</a>
+                        {% for category in categories %}
+                            <li class="list-group-item">{{ category.name }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img src="https://media.istockphoto.com/photos/funny-winking-kitten-picture-id1267021092?k=20&m=1267021092&s=612x612&w=0&h=yzwxZXklHn5NwDTgKmbq2Ojtg3pga6j8K3oT7lLneAY=" class="image-thumbail" alt="...">
-                            <div class="card-body">
-                              <small class="card-text">Category: Pets</small>
+                    {% for photo in photos %}
+                        <div class="col-md-4">
+                            <div class="card my-2">
+                                <img src="{{ photo.image.url }}" class="image-thumbail" alt="...">
+                                <div class="card-body">
+                                <small class="card-text">Category: {{ photo.category.name }}</small>
+                                </div>
+                                <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                             </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
