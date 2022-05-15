@@ -21,6 +21,7 @@
                         {% for category in categories %}
                             <li class="list-group-item">{{ category.name }}</li>
                         {% endfor %}
+                        <a href="{% url 'add' %}" class="btn btn-dark"> Add photo</a>
                     </ul>
                 </div>
             </div>

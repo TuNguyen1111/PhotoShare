@@ -1,6 +1,7 @@
 from .models import Category, Photo
+from .forms import PhotoForm
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -22,4 +23,13 @@ def view_photo(request, pk):
     return render(request, 'photos/photo.html', context)
 
 def add_photo(request):
-    return render(request, 'photos/add.html')
+    form = PhotoForm()
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('gallery')
+    context = {
+        'form': form,
+    }
+    return render(request, 'photos/add.html', context)
