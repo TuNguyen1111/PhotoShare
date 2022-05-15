@@ -18,3 +18,7 @@ class Photo(models.Model):
     @classmethod
     def get_specific_photo(cls, id):
         return get_object_or_404(cls, pk=id)
+
+    @classmethod
+    def filter_photos_by_conditions(cls, conditions):
+        return cls.objects.filter(**conditions)
