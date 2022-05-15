@@ -8,7 +8,14 @@ from django.shortcuts import render, redirect
 
 def gallery(request):
     categories = Category.get_all_categories()
-    photos = Photo.get_all_photos()
+    category_filter = request.GET.get('category')
+    if category_filter:
+        conditions = {
+            'category__name': category_filter
+        }
+        photos = Photo.filter_photos_by_conditions(conditions)
+    else:
+        photos = Photo.get_all_photos()
     context = {
         'categories': categories,
         'photos': photos,

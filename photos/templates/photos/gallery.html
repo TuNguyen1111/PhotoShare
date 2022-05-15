@@ -15,13 +15,16 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
-                      Categories
+                      Phân loại
                     </div>
                     <ul class="list-group list-group-flush">
+                        <a class="list-group-item" href="{% url 'gallery' %}">Tất cả</a>
                         {% for category in categories %}
-                            <li class="list-group-item">{{ category.name }}</li>
+                            <a class="list-group-item" href="{% url 'gallery' %}?category={{ category.name }}">
+                                {{ category.name }}
+                            </a>
                         {% endfor %}
-                        <a href="{% url 'add' %}" class="btn btn-dark"> Add photo</a>
+                        <a href="{% url 'add' %}" class="btn btn-dark">Thêm ảnh</a>
                     </ul>
                 </div>
             </div>
@@ -32,9 +35,9 @@
                             <div class="card my-2">
                                 <img src="{{ photo.image.url }}" class="image-thumbail" alt="...">
                                 <div class="card-body">
-                                <small class="card-text">Category: {{ photo.category.name }}</small>
+                                <small class="card-text">Phân loại: {{ photo.category.name }}</small>
                                 </div>
-                                <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                                <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">Chi tiết</a>
                             </div>
                         </div>
                     {% endfor %}
