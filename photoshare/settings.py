@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'photo',
         'USER': 'test',
         'PASSWORD': 'test',
-        'HOST': 'db',
+        'HOST': 'photo-db',
         'PORT': '3306',
     }
 }

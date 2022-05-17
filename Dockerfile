@@ -1,7 +1,4 @@
-FROM python:3.8-slim
-RUN apt-get update
-RUN apt-get install -y gcc
-RUN apt-get install -y default-libmysqlclient-dev
+FROM python:3.8
 
 ENV PYTHONUNBUFFERED=1
 
